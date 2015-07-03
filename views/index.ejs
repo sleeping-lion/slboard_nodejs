@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="<%= lang %>" dir="<%= lang_dir %>">
+<head>
+	<meta charset="utf-8" />	
+	<title><%= title %></title>
+	<link rel="stylesheet" href="/stylesheets/bootstrap.min.css"/>
+	<link rel="stylesheet" href="/stylesheets/index.css"/>
+	<meta name="keywords" content="slboard,php,게시판,무료게시판,공개게시판,cakephp,rails,cms" />
+	<meta name="author" content="Sleeping-Lion" />	
+	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+	<meta name="author" content="Sleeping-Lion" />
+<!--[if IE]>
+<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
+<![endif]-->
+<!--[if lt IE 9]>
+	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+</head>
+<body>
+<% include element/header %>
+<section id="mom">
+	<section id="main" class="container">
+		<% include element/page_header %>
+		<section class="sub_main">
+			<%- body %>
+		</section>
+</section>
+</section>
+<% include element/footer %>
+</body>
+</html>
