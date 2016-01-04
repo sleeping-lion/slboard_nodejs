@@ -13,8 +13,8 @@ exports.list = function(req, res){
 		     });
 	  });
 };
-exports.add = function(req, res){}
-exports.save = function(req, res){}
+exports.add = function(req, res){};
+exports.save = function(req, res){};
 exports.edit = function(req, res){
     
 	  var id = req.params.id;

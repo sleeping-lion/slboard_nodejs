@@ -3,7 +3,7 @@
  * Module dependencies.
  */
 
-var express = require('express')
+var express = require('express.io')
 	, session = require('express-session')
 	, engine = require('ejs-locals')
   , routes = require('./routes')
@@ -18,7 +18,8 @@ var express = require('express')
   , gallery = require('./routes/gallery')
   , contact = require('./routes/contact')
   , guest_book = require('./routes/guest_book')
-  , blog = require('./routes/blog')  
+  , blog = require('./routes/blog')
+  , chat = require('./routes/chat')   
   , http = require('http')
   , path = require('path');
 
@@ -70,14 +71,11 @@ if (app.get('env') == 'development') {
 
 if (app.get('env') == 'production') {
 	 app.set('trust proxy', 1) // trust first proxy
-	  sess.cookie.secure = true // serve secure cookies
+	  sess.cookie.secure = true; // serve secure cookies
 }
 
 app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
-
-
-
 
 
 app.get('/', routes.index);
@@ -96,7 +94,6 @@ app.get('/questions', question.list);
 app.get('/faqs', faq.list);
 app.get('/portfolios', portfolio.list);
 app.get('/galleries', gallery.list);
-
 
 app.get('/guest_books', guest_book.list);
 app.get('/guest_books/add', guest_book.add);
@@ -121,7 +118,8 @@ app.post('/blogs/edit/:id',blog.save_edit);
 
 app.get('/login',user.login);
 app.post('/login',user.login_s);
-app.get('/logout', user.logout);
+app.get('/logout',user.logout);
+app.get('/chat',chat.list);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
